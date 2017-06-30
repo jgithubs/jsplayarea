@@ -11,4 +11,4 @@ Testing images here.
 
 
 @image html GPIO.png
-![](GPIO.png =100x)
+![](img/GPIO.png)
