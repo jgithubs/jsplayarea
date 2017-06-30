@@ -8,4 +8,4 @@ Playing area
 ## Images
 
 @image html GPIO.png
-![](GPIO.png)
+![](GPIO.png =100x)
