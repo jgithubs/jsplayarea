@@ -11,7 +11,7 @@ This page describes how to build all of the software componets to work with the 
     * January 2017, YES
     * April 2017, NO. Configuration do not work even after updates
   * 8GB card seems most reliable
-  ````
+  ```
 pi> cat /etc/os-release
 PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
 NAME="Raspbian GNU/Linux"
@@ -22,7 +22,7 @@ ID_LIKE=debian
 HOME_URL="http://www.raspbian.org/"
 SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
 BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
-  ````
+  ```
 * Determine how to install the Operating System image on the Raspberry Pi.
   * [Headless example](md/sw-headless.md) (No Gui). Small in size.
   * Front-end example (XWindow). Large in size
