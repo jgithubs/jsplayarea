@@ -11,19 +11,7 @@ This page describes how to build all of the software componets to work with the 
     * January 2017, YES
     * April 2017, NO. Configuration do not work even after updates
   * 8GB card seems most reliable
-  ```
-pi> cat /etc/os-release
-PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
-NAME="Raspbian GNU/Linux"
-VERSION_ID="8"
-VERSION="8 (jessie)"
-ID=raspbian
-ID_LIKE=debian
-HOME_URL="http://www.raspbian.org/"
-SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
-BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
-  ```
-* Determine how to install the Operating System image on the Raspberry Pi.
+* Determine how to install the Operating System imageÂ on the Raspberry Pi.
   * [Headless example](md/sw-headless.md) (No Gui). Small in size.
   * Front-end example (XWindow). Large in size
   * Create [Serial connection](md/hw-serial-connect.md) for serial login
@@ -32,20 +20,20 @@ BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
   * Determine the voltage of the input/output pins (based on the model). This needs to be known so that the correct breakout board and LCD display is selected.
 * Determine how to get a RFID working
   * The RFID install numerous development tools, it is advised to get this functional first.
-  * Get the [RFID RC522 breakout](md/hw-rfid-rc522.md) board working.
+  * Get the [RFID RC522Â breakout](md/hw-rfid-rc522.md) board working.
   * Insure that the board can read and write RFDI/NFC tags.
   * NFC is the latest technology. It can hold large amounts of data.
   * Need a physical button to put the breakout board in "write" mode?
     * Insert a usb stick
 * Determine how to play audio without a GUI
-  * Audio playback with [Music On Console](md/sw-audio-moc.md) (MOC)
+  * Audio playback with [Music On Console](md/sw-audio-moc.md)Â (MOC)
   * Audio output [thru HDMI](md/hw-audio-hdmi.md)
   * Audio control is is handle by the [ALSA mixer](md/sw-audio-alsa.md)
   * Audio output control is handled by XXX
 * Determine how to display pictures with a duration of time without GUI
   * Display pictures with [Frame Buffer ImageViewer](md/sw-frame-buf-img-viewer.md) (FBI)
   * Converting images to specific size to avoid load time and scaling time. Use [Imagemagick](md/sw-img-magick-tools.md) Tools
-  * Use [symbolic links](md/sw-symbolic-link.md) to change pictures with the same filename.
+  * Use [symbolic links](md/sw-symbolic-link.md) to changeÂ pictures with the same filename.
 * Determine how to run multiple sessions. Audio will play in the background and the picture in the front.
   * Multiple sessions with [screen tool](md/sw-session-screen.md).
     * One session is to run the FBI viewer
@@ -53,7 +41,7 @@ BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
   * Use 'top' to see cpu usage information.
 * Determine how to transfer [developed software](md/sw-development.md).
   * Create [FTP server](md/sw-ftp-server.md) to transfer files
-* Determine how to [mount a USB stick](md/hw-mount-usb.md).
+* Determine how to [mount a USBÂ stick](md/hw-mount-usb.md).
   * This shall be auto mounted at boot up
   * This shall be automatically detected when inserted.
 * Determine how to power-off with a button
@@ -67,10 +55,10 @@ This is research done early in the project. The feasibility did not workout main
 
 * Determine how to [create a web server/site](md/sw-web-server.md) on the Pi.
   * The site will be local on the Pi access via local host.
-  * The site is view-able from the LCD Screen (only with XWindows).
+  * The site is view-able from theÂ LCD Screen (only with XWindows).
   * The site is view-able from another computer.
     * Use this as a front-end to download pictures?
-  * The data downloaded on the site when the RFDI/NFC tag is triggered.
+  * The data downloaded on the site whenÂ the RFDI/NFCÂ tag is triggered.
 * Determine how to create playback functionality
   * Audio and Video capability? We need more like Audio with Pictures.
     * Pi Game example, https://learn.adafruit.com/raspberry-pi-pygame-ui-basics/overview
@@ -116,7 +104,7 @@ This is research done early in the project. The feasibility did not workout main
   * Dimension?
 * The tags needs to support the proper frequency of the selected RFDI reader/writer.
 * Prefer re-writable tag
-* Low cost tags that work at a maximum of 3 inches (76.2mm). The minimum depends on the layout of the board (still to be determined).
+* Low cost tags that workÂ at a maximum ofÂ 3 inches (76.2mm). The minimum depends on the layout of the board (still to be determined).
 * Products
   * RFID, https://www.sparkfun.com/products/9417
     * Highlights
