@@ -24,18 +24,25 @@ A 3D part will be created and a known RFID tag will be placed inside of the game
 
 ### Piece Information
 
-* Player Piece is 3" diameter
-* Thickness is 3/4"
-* Need to find a stl file
-* Need to determine the print time
-* Need to modify the stl file such that RFID tag can be placed inside of the piece.
+* Dimensions
+  * Player Piece is 3" diameter.
 
+  * Thickness is 3/4" in height.
+* Need to determine how the student will create their part and how it will be printed.
 ![](img/CheckerMeasure-doxy.jpg)
 
 ### Running the Demo
 
-* Once all physical connections are made, connect the power (via the usb).
-  * Powering will cause the hardware to boot from the image written to the SD card.
+* Set up the physical connections.
+  * Connect primary connections, excluding the power (the USB Power cable).
+    * The mouse is not required since this is headless.
+    * Exclude the USB power for now.
+![](img/PiConnection1.jpg)
+  * Connect the RFID hardware.
+![](img/RaspberryPi-RFID.png)
+  * Connect the the power (via the usb cable).
+    * Powering will cause the hardware to boot from the image written to the SD card.
+    * The audio will output through the HDMI cable (assuming the monitor has speakers).
 * Log in with the default user and password.
   * Username 'pi',
   * Password 'raspberry',
@@ -52,8 +59,17 @@ d
 ```
 cd $HOME
 ./run-loop.sh
-Hit CNTRL-C to exit program
 ```
+The default screen will display a single image and music. At this time, multiple images is not possible.
+
+The following are two example rfid's.
+<img src=http://ecx.images-amazon.com/images/I/81m6UBRj7fL._SX425_.jpg width=380>
+* Swipe the example RFID tag across the RFID reader.
+  * The image and music will change.
+* Swipe another example RFID tag across the RFID reader.
+  * The image and music will change again.
+* When the music is complete, 
+
 To exit the program, simply hit CNTRL-C. 
 
 * Gracefully shutdown the Pi for power off. 
@@ -66,14 +82,11 @@ Pull the USB power from the board.
 
 ### What Remains
 
-* Connect the two screens (via the scripts).
-* The readAudio script needs to:
-  * sList.txt that contains the audio, picture/duration
-  * The file links needs to be set to the actual file
-  * The run-kill.sh needs to be run so that the run-loop can pickup new files.
-* Complete the run-loop.sh
 * Testing
-* Need a way to move the content from the kids to the pi.
+  * Turn up the volume (via script or before hand).
+* Need to determine how to place the content on a usb stick.
+  * The students can create their own content (jpg, mp3) using a PC.
+  * Need to document the format of the usb stick (directory, etc.)
 
 ## Documentation
 
@@ -96,32 +109,32 @@ doxygen -g doxyConfig
 ```
 * Difference between default configuration and modified configuration
 ```
-dos> diff doxyConfig doxyDefault
+gitbash> diff doxyDefault DoxyConfig
 35c35
-< PROJECT_NAME           = "Checkerboard Project"
+< PROJECT_NAME           = "My Project"
 ---
-> PROJECT_NAME           = "My Project"
+> PROJECT_NAME           = "Checkerboard Project"
 61c61
-< OUTPUT_DIRECTORY       = ../DoxyOutput
+< OUTPUT_DIRECTORY       =
 ---
-> OUTPUT_DIRECTORY       =
-793,794c793
-< INPUT                  = README.md \
-<                          .
+> OUTPUT_DIRECTORY       = ../DoxyOutput
+793c793,794
+< INPUT                  =
 ---
-> INPUT                  =
-868c867
-< RECURSIVE              = YES
+> INPUT                  = README.md \
+>                          .
+867c868
+< RECURSIVE              = NO
 ---
-> RECURSIVE              = NO
-930c929
-< IMAGE_PATH             = .
+> RECURSIVE              = YES
+929c930
+< IMAGE_PATH             =
 ---
-> IMAGE_PATH             =
-986c985
-< USE_MDFILE_AS_MAINPAGE = README.md
+> IMAGE_PATH             = .
+985c986
+< USE_MDFILE_AS_MAINPAGE =
 ---
-> USE_MDFILE_AS_MAINPAGE =
+> USE_MDFILE_AS_MAINPAGE = README.md
 ```
 * Create the output
 ```
@@ -133,6 +146,7 @@ doxygen doxyConfig
 ```
 * The desired format is Markdown (MD), https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet  
 * Suggested style, http://www.cirosantilli.com/markdown-style-guide/
+* Mix, http://rickfoosusa.blogspot.com/2011/10/howto-use-doxygen-with-github.html
 
 ## Schematics
 
