@@ -1,6 +1,6 @@
 # Software, Setting up a Web Server
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Links
 

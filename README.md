@@ -8,10 +8,10 @@ The hardware is an RFID reader connected to a Raspberry Pi.
 When the RFID reads a know tag, it will signal playback of music with associated images.
 A 3D part will be created and a known RFID tag will be placed inside of the game piece.
 
-* [Hardware/Software installation](md/hw-project.md) for Project 
-* [Development for picture/audio/RFID](md/sw-development.md)
-* [Student Create Software](md/sc-project.md)
-* [Student 3D Printing](md/sc-print3d.md)
+* [Hardware/Software installation](hw-project.md) for Project 
+* [Development for picture/audio/RFID](sw-development.md)
+* [Student Create Software](sc-project.md)
+* [Student 3D Printing](sc-print3d.md)
 
 ### Board Information
 
@@ -142,4 +142,4 @@ The wiring diagram is done using the Fritizing tool.
 
 ## GitHub
 
-The documentation is stored in GitHub. GitHub has a [series of commands](md/sw-github.md) to check changes in and out.
+The documentation is stored in GitHub. GitHub has a [series of commands](sw-github.md) to check changes in and out.

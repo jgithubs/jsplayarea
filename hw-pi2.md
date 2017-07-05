@@ -1,6 +1,6 @@
 # Hardware, Raspberry Pi Model B Rev 2
 
-* [Hardware Project](md/hw-project.md)
+* [Hardware Project](hw-project.md)
 
 ## Hardware
 

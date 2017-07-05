@@ -1,8 +1,8 @@
 # Hardware, Serial Connection
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
-[Software, Headless](md/sw-headless.md)
+[Software, Headless](sw-headless.md)
 
 ## Links
 

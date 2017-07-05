@@ -1,6 +1,6 @@
 # Hardware, Mount a USB stick
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Images
 

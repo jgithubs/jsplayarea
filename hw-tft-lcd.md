@@ -1,6 +1,6 @@
 # Hardware, Setup TFT LCD Screen
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Display
 
@@ -14,7 +14,7 @@ How To Guide using 'Image', https://learn.adafruit.com/adafruit-pitft-28-inch-re
 
 To test without configuration, use the image on the Adafruit site.
 * Last known name, 2016-10-18-pitft-28r.img
-* [Write the image](md/sw-format-sd.md) to the SD card.
+* [Write the image](sw-format-sd.md) to the SD card.
 
 ### Boot the OS
 

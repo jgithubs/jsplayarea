@@ -1,6 +1,6 @@
 # Software, Headless
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Hardware
 
@@ -23,7 +23,7 @@ Download the image from the Raspbian site.
 
 When the image is downloaded, uncompressed the zip file. 
 * Uncompresseing will result in a single *.img file. 
-* [Format the SD Card and burn the image file](md/sw-format-sd.md) to the SD Card.
+* [Format the SD Card and burn the image file](sw-format-sd.md) to the SD Card.
 * Proceed with Direct Connect, updates, and configuration.
 
 ## Direct Connect
@@ -31,7 +31,7 @@ When the image is downloaded, uncompressed the zip file.
 * Connect the HDMI cable and turn monitor ON.
 * Connect the keyboard
 * Connect the mouse (not necessary for headless)
-* Connect the [ethernet cable](md/hw-ethernet-connect.md) and/or the [serial cable](md/hw-serial-connect.md)
+* Connect the [ethernet cable](hw-ethernet-connect.md) and/or the [serial cable](hw-serial-connect.md)
 * Connect the audio. Initially start with earphones, configuration thru HDMI will happen later.
 * Insert the SD card
 ![](img/PiConnection1.jpg)
@@ -49,10 +49,10 @@ The root file system will be resized at first boot.
 
 The first step after powering on the Pi with a OS images is configuration. There is a problem where connecting to the operating system are not always intuitive. All that needs to be done is log into the OS and run the configuration program. Connection options are Ethernet, Serial, and/or Keyboard/Mouse/Monitor and they all have their own limitations. Once the connection is made the default has to be modified to provide proper access.
 
-* [Ethernet](md/hw-ethernet-connect.md) is the best method because it requires a single Ethernet cable.
-This connection uses the [SSH Server](md/sw-ssh-server.md) and a router the assigns an ethernet address.
+* [Ethernet](hw-ethernet-connect.md) is the best method because it requires a single Ethernet cable.
+This connection uses the [SSH Server](sw-ssh-server.md) and a router the assigns an ethernet address.
 
-* [Serial](md/hw-serial-connect.md) is straight forward, however, a special serial cable is required.
+* [Serial](hw-serial-connect.md) is straight forward, however, a special serial cable is required.
 
 * Direct connect is the connecting a Keyboard/Mouse/Monitor (described above) directly to the Raspberry Pi.
 This is initially required to get ethernet.

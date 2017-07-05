@@ -1,6 +1,6 @@
 # Hardware, Audio thru HDMI device
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Links
 

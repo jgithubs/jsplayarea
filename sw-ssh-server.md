@@ -1,8 +1,8 @@
 # Software, SSH Server Setup
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
-[Software, Headless](md/sw-headless.md)
+[Software, Headless](sw-headless.md)
 
 ## Notables
 
@@ -47,7 +47,7 @@ The communication tool requires the IP address of the Raspberry Pi.
 The port is most always Port 22.
 Insure that your ethernet cable is attached.
 Use ipconfig to obtain the address.
-See [Ethernet instructions](md/hw-ethernet-connect.md) instructions for more information.
+See [Ethernet instructions](hw-ethernet-connect.md) instructions for more information.
 
 ![](img/PuttySsh.jpg)
 

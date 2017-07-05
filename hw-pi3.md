@@ -1,6 +1,6 @@
 # Hardware, Raspberry Pi 3
 
-* [Hardware Project](md/hw-project.md)
+* [Hardware Project](hw-project.md)
 
 ## Plan
 

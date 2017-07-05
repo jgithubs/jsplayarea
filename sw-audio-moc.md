@@ -1,8 +1,8 @@
 # Software, Music on Console (MOC)
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
-[Alsa Audio](md/sw-audio-alsa.md)
+[Alsa Audio](sw-audio-alsa.md)
 
 ## Links
 
@@ -22,7 +22,7 @@ RavanSpi, http://dalliard.net/files/ravenispi.php
 
 ## Audio Files
 
-Download example files by typing the commands below or using a [SSH connection](md/sw-ssh-server.md).
+Download example files by typing the commands below or using a [SSH connection](sw-ssh-server.md).
 Simple copying of the links below into the SSH connection.
 
 ```

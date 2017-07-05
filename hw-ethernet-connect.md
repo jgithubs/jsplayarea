@@ -1,8 +1,8 @@
 # Hardware, Ethernet Connection
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
-[Software, Headless](md/sw-headless.md)
+[Software, Headless](sw-headless.md)
 
 ## Connection
 
@@ -52,7 +52,7 @@ Control-C
 ## Logging in thru Ethernet
 
 A communication program can be used to login through ethernet.
-Before this can be done, the [SSH Server](md/sw-ssh-server.md) needs to be activated.
+Before this can be done, the [SSH Server](sw-ssh-server.md) needs to be activated.
 
 
 

@@ -1,6 +1,6 @@
 # Hardware, RFID with RC522
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Raspberry Pi Examples
 

@@ -1,8 +1,8 @@
 # Software, Frame Buffer ImageViewer (FBI)
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
-[Software, Headless](md/sw-headless.md)
+[Software, Headless](sw-headless.md)
 
 ## Links
 
@@ -57,5 +57,5 @@ sudo fbi -t 3 -1 -T 1 File.jpg
 
 There are issues where the display time is longer than the specified time.
 One known issues is that the image is being resized. Large images can take up to 5 seconds.
-It is suggested to resize the images using the [ImagemagicK tools](md/sw-img-magick-tools.md).
+It is suggested to resize the images using the [ImagemagicK tools](sw-img-magick-tools.md).
 

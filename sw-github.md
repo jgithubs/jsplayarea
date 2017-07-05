@@ -1,6 +1,6 @@
 # Software, GitHub for documentation and source code
 
-* [Hardware Project](md/hw-project.md)
+* [Hardware Project](hw-project.md)
 
 ## Commands
 

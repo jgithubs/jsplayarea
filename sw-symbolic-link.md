@@ -1,6 +1,6 @@
 # Software, Symbolic links
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Overview
 

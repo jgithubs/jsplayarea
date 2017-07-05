@@ -1,6 +1,6 @@
 # Software, Using Imagemagick tools
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Links
 
@@ -38,7 +38,7 @@ Giving the exact width and height. Notice the '!' for the size. The image may ap
 ```
 pi> convert cover.jpg -resize 680×480! new-cover.jpg
 ```
-Test image in using [FBI](md/sw-frame-buf-img-viewer.md) to verify that no "resizing" is ocurring.
+Test image in using [FBI](sw-frame-buf-img-viewer.md) to verify that no "resizing" is ocurring.
 
 ## Image information
 

@@ -1,6 +1,6 @@
 # Software, Multiple Sessions with Screen
 
-[Hardware, Installation](md/hw-project.md)
+[Hardware, Installation](hw-project.md)
 
 ## Links
 

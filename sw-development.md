@@ -1,6 +1,6 @@
 # Development, Scripts to intergrate Pictures/Audio/RFID
 
-* [Hardware Project](md/hw-project.md)
+* [Hardware Project](hw-project.md)
 
 ## Development
 
