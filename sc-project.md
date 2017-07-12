@@ -1,6 +1,165 @@
 # Student, Create Project
 
 The plan was to describe how the student:
-* Created the music and/or naration
-* Created the associated research material where the end result is a jpg image
-* Transfers their material to the Pi with an associated RFID tag identification
+* Created the music and/or narration
+  * Created the associated research material where the end result is a jpg image.
+  * Create music or create a recording (in MP3 format) of narration and/or music.
+* Transfers their material to the Pi with an associated RFID tag identification.
+  * Transfer files to a USB stick in a directory.
+  * Upon inserting the USB stick to the Pi,
+    * Copy over the files to the Raspberry Pi system.
+
+## RFID Tag
+
+### Create Content in Windows
+
+* Create or obtain one MP3 file (other format types are not yet supported).
+* Create or obtain one or more JPG file (other format types are not yet supported).
+* A USB stick is required to import the images into the Raspberry Pi.
+This USB stick is assumed to be [setup to automount](hw-mount-usb.md) when inserted into the Raspberry Pi.
+* Put files in a directory structure shown below on the USB stick.
+It is suggested not to use uppercases.
+The Raspberry Pi is case sensitive, therefore, using one case (lowercase) helps with debugging.
+```
+  import -+--- default
+          |
+          +--- sally
+          |
+          +--- joe
+```
+* Create a text file listing one MP3 file and N JPG file(s).
+```
+  Format:
+  <Audio>,<Min>:<Sec>  <Picture>,<Sec>   <Picture>,<Sec> ... <EOL>
+```
+  * Audio filenames shall end with a ".mp3". It is always the first in the list.
+  * Picture filenames shall end with a ".jpg"
+  * The sum of the picture seconds shall be equal to or less than the audio (in seconds).
+  * In the case below, the audio file is 2 minutes and 30 seconds.
+    The file has three pictures.
+    The first picture will play for 5 seconds, the second 4 seconds and the third 3 seconds.
+```
+pi> cat hList.txt
+hFile1.mp3,2:30 hFile1.jpg,5 hFile2.jpg,4 hFile3.jpg,3
+```
+  * The text file, audio file and image file(s) shall exists in the same directory as the media files.
+
+### Transfer content via a USB stick
+
+The best way to transfer files into the Raspberry Pi is files on a USB stick.
+
+* Login into the raspberry pi
+* Insert the USB stick (the specific usb port does not matter).
+* Verify that the USB stick is present
+```
+pi> df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root       30583756 1313548  27997888   5% /
+devtmpfs          218256       0    218256   0% /dev
+tmpfs             222540       0    222540   0% /dev/shm
+tmpfs             222540    4524    218016   3% /run
+tmpfs               5120       4      5116   1% /run/lock
+tmpfs             222540       0    222540   0% /sys/fs/cgroup
+/dev/mmcblk0p1     63503   20604     42899  33% /boot
+/dev/sda1        7812864 5704800   2108064  74% /media/mnt
+```
+* Run a special script file
+  * A list of directories in the 'Src Root' will be displayed
+  * The user will be prompted to pick a directory to import
+  * The user will be prompted to scan their RFID tag.
+At this time, place the RFID tag againest the RFID reader.
+```
+pi> ./readUsb.py
+
+-----
+Dst Root         : /home/pi/data
+Src Root         : /media/mnt/import
+--
+Src Default      : default
+Dst Default      : ffffffffff
+--
+Rfid Default List: hList.txt
+-----
+
+Welcome to the Rfid directory setup
+
+Select directory to import
+1 . default
+2 . Joe
+3 . Sally
+Option: 2
+/home/pi/src/MFRC522-python/MFRC522.py:113: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(22, GPIO.OUT)
+
+Ready for RFID scan
+Press Ctrl-C to stop.
+-----
+RFID-Status: Detected
+RFID-Uid: 0xe196718b8d
+Size: 8
+Sector 8 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+RFID-Auth: MI_OK
+
+User Name: Joe
+aRootDir : /media/mnt/import
+aSubDir  : Joe
+aTextFile: hList.txt
+Line     = four-winds-web.mp3,2:10 01-images.jpg,5 02-LctVT.jpg,5 03-raspberry-pi-2-pinout.jpg,5 04-Fig-12-Raspberry-Pi-Components-Explanation.jpg,5 05-images.jpg,5
+Elements = 6
+four-winds-web.mp3,2:10
+/media/mnt/import/Joe/four-winds-web.mp3
+01-images.jpg,5
+/media/mnt/import/Joe/01-images.jpg
+02-LctVT.jpg,5
+/media/mnt/import/Joe/02-LctVT.jpg
+03-raspberry-pi-2-pinout.jpg,5
+/media/mnt/import/Joe/03-raspberry-pi-2-pinout.jpg
+04-Fig-12-Raspberry-Pi-Components-Explanation.jpg,5
+/media/mnt/import/Joe/04-Fig-12-Raspberry-Pi-Components-Explanation.jpg
+05-images.jpg,5
+/media/mnt/import/Joe/05-images.jpg
+Validated source file(s)
+
+Rfid Tag : e196718b8d
+aRootDir : /home/pi/data
+aSubDir  : e196718b8d
+aTextFile: hList.txt
+Warning, file path ( /home/pi/data/e196718b8d ) does not exists.
+Validated destination. Destination does not exists.
+
+Copy over selected data? y
+/media/mnt/import/Joe:/home/pi/data/e196718b8d/
+cp -r /media/mnt/import/Joe /home/pi/data/e196718b8d/
+Done
+```
+  * The source data will be validated
+  * The destination will be validated not to exist
+  * The user will be prompted to copy files over
+
+Run the command again for the next users.
+If the RFID tag needs to be removed, the validation of the destination will fail.
+The user will be asked if this directory should be removed.
+When asked to copy over files, answer "no".
+This should remove the tag from the system.
+
+#### Log in and start scripts project scripts.
+The scripts were written to use all of the installed software.
+
+* Default credentials
+  * Username: pi
+  * Password: raspberry
+* Start the script that will associate the RFID tag to the directory name.
+```
+cd $HOME
+screen bash
+./readUsb.py
+CNTRL-A
+d
+```
+
+The default screen will display a single image and music. At this time, multiple images is not possible.
+
+### Transfer content using FTP
+
+Transfering content via FTP requires a network connection.
+This will be described later.

@@ -59,7 +59,38 @@ Tag Identifier is 20 bytes (160 bits). 8 bits per byte (8 bits-per-byte * 20 byt
 Python reads as a list [int,int,int,int,int], then converted to long (0x251C718BC3)
 ## Wiring Scheme
 
-![](img/RaspberryPi-RFID.png)
+![RFID Breakout, Lower pins are reserved for Serial Connection](img/RaspberryPi-RFID.png)
+
+```
+Physical Pins
+25 23 21 19 17 15 13 11 09 07 05 03 01
+26 24 22 20 18 16 14 12 10 08 06 04 02
+
+Breakout-Pin to Physical-Pin
+25   --> GND
+
+24   --> SDA
+23   --> SCK
+
+22   --> RST
+21   --> MISO
+
+19   --> MOSI
+
+17   --> 3.3V
+
+NC   --> IRQ
+
+Breakout-Pin to Physical-Pin
+SDA  --> 24
+SCK  --> 23
+MOSI --> 19
+MISO --> 21
+IRQ  --> NC
+GND  --> 25
+RST  --> 22
+3.3V --> 17
+```
 
 ## Enable SPI on the OS
 

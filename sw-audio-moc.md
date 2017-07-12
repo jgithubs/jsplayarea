@@ -20,6 +20,8 @@ Ubuntu mocp manual, http://manpages.ubuntu.com/manpages/xenial/man1/mocp.1.html
 
 RavanSpi, http://dalliard.net/files/ravenispi.php
 
+Autums Child, Mark Holland, http://autumnschild.com/index.html
+
 ## Audio Files
 
 Download example files by typing the commands below or using a [SSH connection](sw-ssh-server.md).

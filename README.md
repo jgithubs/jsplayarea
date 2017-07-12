@@ -1,12 +1,15 @@
 # Project Overview
 
-The details are referenced by links. Running and creating the documentation is described.
+The details to create the project is described along with how-to documentation.
+The pending portion is the 3d print portion.
 
 ## Project Components
 
 The hardware is an RFID reader connected to a Raspberry Pi.
 When the RFID reads a know tag, it will signal playback of music with associated images.
 A 3D part will be created and a known RFID tag will be placed inside of the game piece.
+When the game piece comes off the board, the player will swipe the piece across the RFID reader.
+The player's selected images and music will be played on a HDMI screen.
 
 * [Hardware/Software installation](hw-project.md) for Project 
 * [Development for picture/audio/RFID](sw-development.md)
@@ -16,11 +19,11 @@ A 3D part will be created and a known RFID tag will be placed inside of the game
 ### Board Information
 
 * Board has 64 squares
-* Board dimension: TBD
+* Board dimension: 28" x 28"
 * Each player has 12 pieces (total of 24 pieces)
-* Find a board that fits the piece size.
+* Board is made of fabric, previously purchased.
 
-![](img/CheckerBoard-doxy.jpg)
+![Checker Board](img/CheckerBoard-doxy.jpg)
 
 ### Piece Information
 
@@ -29,25 +32,31 @@ A 3D part will be created and a known RFID tag will be placed inside of the game
 
   * Thickness is 3/4" in height.
 * Need to determine how the student will create their part and how it will be printed.
-![](img/CheckerMeasure-doxy.jpg)
+
+![Checker Piece](img/CheckerMeasure-doxy.jpg)
 
 ### Running the Demo
 
-* Set up the physical connections.
+#### Set up the physical connections.
   * Connect primary connections, excluding the power (the USB Power cable).
     * The mouse is not required since this is headless.
-    * Exclude the USB power for now.
-![](img/PiConnection1.jpg)
-  * Connect the RFID hardware.
-![](img/RaspberryPi-RFID.png)
-  * Connect the the power (via the usb cable).
-    * Powering will cause the hardware to boot from the image written to the SD card.
-    * The audio will output through the HDMI cable (assuming the monitor has speakers).
-* Log in with the default user and password.
-  * Username 'pi',
-  * Password 'raspberry',
+    * Exclude the USB power until the RFID hardware is connected.
+    * The HDMI is connected to a HDMI monitor with speakers.
+    * The SD card is expected to be [previously installed](hw-project.md).
 
-* Screen 1 (Should be run first)
+![Raspberry Pi 2, Connection](img/PiConnection1.jpg)
+  * Connect the [RFID hardware](hw-rfid-rc522.md).
+![RFID-RC522, Inverted to align with previous picture](img/RaspberryPi-RFID.png)
+  * Connect the the power (via the usb cable).
+    - Powering will cause the hardware to boot from the image written to the SD card.
+    - A log-in screen will appear on the monitor.
+
+#### Log in and start scripts project scripts.
+The scripts were written to use all of the installed software.
+
+* Default credentials
+  * Username: pi
+  * Password: raspberry
 ```
 cd $HOME
 screen bash
@@ -60,10 +69,17 @@ d
 cd $HOME
 ./run-loop.sh
 ```
+
 The default screen will display a single image and music. At this time, multiple images is not possible.
 
-The following are two example rfid's.
+#### Swiping of RFID tags.
+The RFID tag contains a unique number.
+Before a tag can work, it's RFID nubmer needs to be written into the system with a single audio and multiple pictures.
+
+The following are two example rfid's that has already been setup.
+
 <img src=http://ecx.images-amazon.com/images/I/81m6UBRj7fL._SX425_.jpg width=380>
+
 * Swipe the example RFID tag across the RFID reader.
   * The image and music will change.
 * Swipe another example RFID tag across the RFID reader.
@@ -72,13 +88,20 @@ The following are two example rfid's.
 
 To exit the program, simply hit CNTRL-C. 
 
+#### Shutting down the Raspberry Pi
+
+The Raspberry Pi needs to be shutdown gracefully.
+This is to avoid corruption of the Image on the SD card.
+You need to invoke the command as an administrator, therefore, use 'sudo'.
+You may be prompted for a password.
+The password is the same as the login password.
+
 * Gracefully shutdown the Pi for power off. 
 This is required to avoid corruption of the OS on the SD card.
 ```
 sudo shutdown now -h
 ```
 Pull the USB power from the board.
-
 
 ### What Remains
 
@@ -90,7 +113,9 @@ Pull the USB power from the board.
 
 ## Documentation
 
-The documentation is created using [doxygen] (http://www.stack.nl/~dimitri/doxygen/index.html). This replaces the [WordPress website](http://www.stemfromgirls.org/janet-test/) that will soon expire.
+The documentation is created using [doxygen] (http://www.stack.nl/~dimitri/doxygen/index.html).
+This replaces the [WordPress website](http://www.stemfromgirls.org/janet-test/) that will soon expire.
+This documentatino is stored in git hub: https://github.com/jgithubs/jsplayarea.
 
 * Create a configuration file
 ```
