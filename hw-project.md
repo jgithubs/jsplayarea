@@ -27,8 +27,8 @@ This page describes how to build all of the software componets to work with the 
     * Insert a usb stick
 * Determine how to play audio without a GUI
   * Audio playback with [Music On Console](sw-audio-moc.md) (MOC)
-  * Audio output [thru HDMI](hw-audio-hdmi.md)
-  * Audio control is is handle by the [ALSA mixer](sw-audio-alsa.md)
+  * Audio volume control is is handle by the [ALSA mixer](sw-audio-alsa.md)
+  * Audio output information [thru HDMI](hw-audio-hdmi.md)
   * Audio output control is handled by XXX
 * Determine how to display pictures with a duration of time without GUI
   * Display pictures with [Frame Buffer ImageViewer](sw-frame-buf-img-viewer.md) (FBI)

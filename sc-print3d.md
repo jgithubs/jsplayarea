@@ -7,4 +7,6 @@ The plan was this section was to describe how to create the 3d artifact
   * Modify such that the 
     * RFID tag can be inserted.
     * The base is printed a head of time
-    * The top is printed as needed
+    * The top is printed after the student designs and creates their 3d image part.
+ * The student shall insert their RFID tag into the part.
+ * The student shall hot glue thier 3D part on top of the 3d base.

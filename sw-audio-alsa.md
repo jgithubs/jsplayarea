@@ -1,4 +1,4 @@
-# Software, Audio with Alsa Mixer
+# Software, Audio Control with Alsa Mixer
 
 [Hardware, Installation](hw-project.md)
 
@@ -10,7 +10,10 @@ Command Line Audio, http://www.raspberrypi-spy.co.uk/2013/06/raspberry-pi-comman
 
 ## Alsa Information
 
-Setting the volume is best done using 'alsamixer'. A mini-GUI comes up and the volume can be changed by using the up and down arrows. The default setting is '44'.
+Setting the volume is best done using 'alsamixer'. 
+A mini-GUI comes up and the volume can be changed by using the up and down arrows. 
+The default setting is '44'.
+The default view is 'Playback'.
 ```
 pi> alsamixer
  Card: bcm2835 ALSA
@@ -18,6 +21,8 @@ pi> alsamixer
  View: F3[Playback] F4:Capture F5:All
  Item: PCM [dB gain: -17.25]
 ```
+
+
 ```
 F2 System information
 /proc/asound/cards
@@ -27,9 +32,11 @@ F2 System information
 
 ## Get current information using 'amixer'
 
+* Settings when connected through the Rc Jack.
 ```
 pi> amixer scontrols
 Simple mixer control 'PCM',0
+
 pi> amixer scontents
 Simple mixer control 'PCM',0
  Capabilities: pvolume pvolume-joined pswitch pswitch-joined
@@ -37,6 +44,26 @@ Simple mixer control 'PCM',0
  Limits: Playback -10239 - 400
  Mono: Playback -1726 [80%] [-17.26dB] [on]
 ```
+* Settings when connected through HDMI to HDMI
+```
+pi> amixer controls
+numid=3,iface=MIXER,name='PCM Playback Route'
+numid=2,iface=MIXER,name='PCM Playback Switch'
+numid=1,iface=MIXER,name='PCM Playback Volume'
+numid=5,iface=PCM,name='IEC958 Playback Con Mask'
+numid=4,iface=PCM,name='IEC958 Playback Default'
+```
+
+Take notice that the channel is mono. Need to verify if the Raspberry Pi 3 is mono.
+```
+pi> amixer scontents
+Simple mixer control 'PCM',0
+  Capabilities: pvolume pvolume-joined pswitch pswitch-joined
+  Playback channels: Mono
+  Limits: Playback -10239 - 400
+  Mono: Playback -1725 [80%] [-17.25dB] [on]
+```
+
 ## Audio control using 'amixer'
 
 The audio levels can be controlled by setting the percentage.

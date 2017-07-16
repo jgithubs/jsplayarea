@@ -2,6 +2,10 @@
 
 * [Hardware Project](hw-project.md)
 
+## Links
+* Tortois Git, https://tortoisegit.org/
+* Git for Windows, https://git-for-windows.github.io/
+
 ## Commands
 
 Download source tree

@@ -1,20 +1,40 @@
 # Student, Create Project
 
-The plan was to describe how the student:
-* Created the music and/or narration
-  * Created the associated research material where the end result is a jpg image.
-  * Create music or create a recording (in MP3 format) of narration and/or music.
-* Transfers their material to the Pi with an associated RFID tag identification.
-  * Transfer files to a USB stick in a directory.
-  * Upon inserting the USB stick to the Pi,
-    * Copy over the files to the Raspberry Pi system.
+The create part of the project is to have the student put together a series of pictures with audio.
+The audio can be a selected piece of music on the web or a recorded narration on their subject.
+This collection is the content that will be transferred to the Raspberry Pi and associated with a RFID tag.
 
-## RFID Tag
+* Audio
+  * This file is an MP3 file. The audio will be played when the series of pictures is displayed.
+The audio will stop when the last picture display time ends.
+* Pictures
+  * This file is an JPG file.
+The display time is configured by the student.
+The sum of the display time should be less than the length of the audio.
+* RFID Tag
+  * An RFID Tag is Radio Frequency Identification tag. 
+It is similar to a barcode where data is stored in th tag. 
+Each tag has a unique identification number.
+To obtain the number, the RFID tag needs to be swiped across a RFID reader.
+
+When the RFID tag is swiped across the RFID reader, the associated audio will play along with associated picture(s).
+Each picture is displayed for a specified duration (in seconds).
+When the last picture is displayed at its duration, the audio will be stopped.
+The monitor will display a default image with default music.
+
+## RFID Tag Association
+
+Each student is given a RFID tag.
+The RFID tag needs to be swiped against the reader to obtain the RFID number.
+The content will then be transfered to the Raspberry Pi.
 
 ### Create Content in Windows
 
-* Create or obtain one MP3 file (other format types are not yet supported).
-* Create or obtain one or more JPG file (other format types are not yet supported).
+* One MP3 file (other format types are not yet supported) is required.
+* One or more JPG file (other format types are not yet supported) is required.
+  * This image shall be 480xXXX in size.
+  * There is [software on the Raspberry Pi](sw-img-magick-tools.md) that can scale down the image.
+This can also be done on the PC when the image is created.
 * A USB stick is required to import the images into the Raspberry Pi.
 This USB stick is assumed to be [setup to automount](hw-mount-usb.md) when inserted into the Raspberry Pi.
 * Put files in a directory structure shown below on the USB stick.
@@ -27,7 +47,8 @@ The Raspberry Pi is case sensitive, therefore, using one case (lowercase) helps 
           |
           +--- joe
 ```
-* Create a text file listing one MP3 file and N JPG file(s).
+* Create a text file called hList.txt.
+* The text file will list one MP3 file and N JPG file(s).
 ```
   Format:
   <Audio>,<Min>:<Sec>  <Picture>,<Sec>   <Picture>,<Sec> ... <EOL>
@@ -50,7 +71,8 @@ The best way to transfer files into the Raspberry Pi is files on a USB stick.
 
 * Login into the raspberry pi
 * Insert the USB stick (the specific usb port does not matter).
-* Verify that the USB stick is present
+* Verify that the USB stick is present.
+In this case the USB stick is /media/mnt.
 ```
 pi> df
 Filesystem     1K-blocks    Used Available Use% Mounted on
@@ -63,12 +85,14 @@ tmpfs             222540       0    222540   0% /sys/fs/cgroup
 /dev/mmcblk0p1     63503   20604     42899  33% /boot
 /dev/sda1        7812864 5704800   2108064  74% /media/mnt
 ```
-* Run a special script file
-  * A list of directories in the 'Src Root' will be displayed
-  * The user will be prompted to pick a directory to import
+* Run a special script that reads from the USB stick.
+Do not be concerned if a runtime error occurs about the MFRC522 library.
+  * A list of directories in the 'Src Root' will be displayed.
+  * The user will be prompted to select a directory to import. This is directories on the USB stick.
   * The user will be prompted to scan their RFID tag.
 At this time, place the RFID tag againest the RFID reader.
 ```
+pi> cd $HOME
 pi> ./readUsb.py
 
 -----
@@ -132,32 +156,18 @@ Copy over selected data? y
 cp -r /media/mnt/import/Joe /home/pi/data/e196718b8d/
 Done
 ```
-  * The source data will be validated
-  * The destination will be validated not to exist
-  * The user will be prompted to copy files over
+  * The source data will be validated. This is data on the USB stick.
+  * The destination will be validated not to exist.
+  * The user will be prompted to copy files over.
 
 Run the command again for the next users.
+
 If the RFID tag needs to be removed, the validation of the destination will fail.
-The user will be asked if this directory should be removed.
+The user will be asked if this directory should be removed, answer "yes".
 When asked to copy over files, answer "no".
 This should remove the tag from the system.
 
-#### Log in and start scripts project scripts.
-The scripts were written to use all of the installed software.
-
-* Default credentials
-  * Username: pi
-  * Password: raspberry
-* Start the script that will associate the RFID tag to the directory name.
-```
-cd $HOME
-screen bash
-./readUsb.py
-CNTRL-A
-d
-```
-
-The default screen will display a single image and music. At this time, multiple images is not possible.
+The "default" users is the default music/picture. This should only be done by the instructor.
 
 ### Transfer content using FTP
 

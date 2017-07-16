@@ -11,10 +11,12 @@
 
 ## Device Information
 
+The following will provide the device name. The last two are two HDMI sources.
 ```
 pi> tvservice -n
-VGA to HDMI, device_name=DEL-DELL_1704FPT
-Auto HDMI,   device_name=RTK-LT-32X575
+VGA to HDMI,  device_name=DEL-DELL_1704FPT
+Auto HDMI,    device_name=RTK-LT-32X575
+HDMI to HDMI, device_name=ACI-ASUS-VH238
 ```
 
 
@@ -24,6 +26,7 @@ Auto HDMI,   device_name=RTK-LT-32X575
 pi> tvservice -s
 VGA to HDMI, state 0x120006 [DVI DMT (35) RGB full 5:4],   1280x1024 @ 60.00Hz, progressive
 Auto HDMI,   state 0x12000a [HDMI CEA (5) RGB lim 16:9],   1920x1080 @ 60.00Hz, interlaced
+HDMI to HDMI,state 0x12000a [HDMI CEA (16) RGB lim 16:9],  1920x1080 @ 60.00Hz, progressive
 Adafruit,    state 0x12000a [HDMI DMT (81) RGB full 16:9], 1366x768  @ 60.00Hz, progressive
 CEA (Entertainment devices, used by VGA),
 ```

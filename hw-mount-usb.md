@@ -4,8 +4,8 @@
 
 ## Links
 
-Mount various usb sticks, https://raspberrypi.stackexchange.com/questions/41959/automount-various-usb-stick-file-systems-on-jessie-lite
-Auto mounting usb, http://posts.danharper.me/raspberry-pi-2-auto-mount-usb/
+*Mount various usb sticks, https://raspberrypi.stackexchange.com/questions/41959/automount-various-usb-stick-file-systems-on-jessie-lite
+*Auto mounting usb, http://posts.danharper.me/raspberry-pi-2-auto-mount-usb/
 
 ## Obtain USB device information
 

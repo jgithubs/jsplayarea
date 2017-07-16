@@ -12,7 +12,7 @@ When the game piece comes off the board, the player will swipe the piece across 
 The player's selected images and music will be played on a HDMI screen.
 
 * [Hardware/Software installation](hw-project.md) for Project 
-* [Development for picture/audio/RFID](sw-development.md)
+* [Development files for picture/audio/RFID](sw-development.md)
 * [Student Create Software](sc-project.md)
 * [Student 3D Printing](sc-print3d.md)
 
