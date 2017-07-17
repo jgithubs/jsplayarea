@@ -1,7 +1,10 @@
 # Project Overview
 
-The details to create the project is described along with how-to documentation.
-The pending portion is the 3d print portion.
+This project is enhance the game pieces for a board game.
+The example here is to use checker pieces.
+The piece is moderenize by placing a RFID chip inside the piece.
+When the RFID tag is registered with the project, the student will provide content when the RFID chip is scanned across the RFID reader.
+The details to create the project is described and [published on GitHub](https://github.com/jgithubs/jsplayarea).
 
 ## Project Components
 
@@ -16,11 +19,20 @@ The player's selected images and music will be played on a HDMI screen.
 * [Student Create Software](sc-project.md)
 * [Student 3D Printing](sc-print3d.md)
 
+### What Remains
+
+* Testing
+  * Turn up the volume (via script or before hand).
+* Need to add another field to compensate for audio levels.
+  * Audio levels may not be the same for each student.
+  * Audio levels need to be set initially for the default audio/pictures.
+* All 3D printing aspects are pending.
+
 ### Board Information
 
 * Board has 64 squares
 * Board dimension: 28" x 28"
-* Each player has 12 pieces (total of 24 pieces)
+* Each player has 12 pieces (Total of 24 pieces)
 * Board is made of fabric, previously purchased.
 
 ![Checker Board](img/CheckerBoard-doxy.jpg)
@@ -31,7 +43,7 @@ The player's selected images and music will be played on a HDMI screen.
   * Player Piece is 3" diameter.
 
   * Thickness is 3/4" in height.
-* Need to determine how the student will create their part and how it will be printed.
+* One face will remain standard, the other face will be created by the student (King side).
 
 ![Checker Piece](img/CheckerMeasure-doxy.jpg)
 
@@ -39,13 +51,15 @@ The player's selected images and music will be played on a HDMI screen.
 
 #### Set up the physical connections.
   * Connect primary connections, excluding the power (the USB Power cable).
-    * The mouse is not required since this is headless.
-    * Exclude the USB power until the RFID hardware is connected.
-    * The HDMI is connected to a HDMI monitor with speakers.
-    * The SD card is expected to be [previously installed](hw-project.md).
+    * Ignore the case, it is not required.
+    * The [RFID hardware](hw-rfid-rc522.md) is not shown.
+    * The mouse is not required since the image is headless.
+    * The HDMI is connected to a [HDMI monitor](hw-audio-hdmi.md) with speakers.
+    * The SD card is expected to be [previously installed](hw-project.md) with an image.
 
 ![Raspberry Pi 2, Connection](img/PiConnection1.jpg)
   * Connect the [RFID hardware](hw-rfid-rc522.md).
+    * This is connected on the far left because if the [serial connection](hw-serial-connect.md) is used, it connects to the far right.
 ![RFID-RC522, Inverted to align with previous picture](img/RaspberryPi-RFID.png)
   * Connect the the power (via the usb cable).
     - Powering will cause the hardware to boot from the image written to the SD card.
@@ -74,9 +88,10 @@ The default screen will display a single image and music. At this time, multiple
 
 #### Swiping of RFID tags.
 The RFID tag contains a unique number.
-Before a tag can work, it's RFID nubmer needs to be written into the system with a single audio and multiple pictures.
+Before a tag can work, it's RFID number needs to be written into the system with a single audio and multiple pictures.
 
-The following are two example rfid's that has already been setup.
+The following are two example rfid's that came with the purchase of the RFID reader.
+Their RFID number has already been setup with the Raspberry Pi.
 
 <img src=http://ecx.images-amazon.com/images/I/81m6UBRj7fL._SX425_.jpg width=380>
 
@@ -101,20 +116,11 @@ This is required to avoid corruption of the OS on the SD card.
 ```
 sudo shutdown now -h
 ```
-Pull the USB power from the board.
-
-### What Remains
-
-* Testing
-  * Turn up the volume (via script or before hand).
-* Need to determine how to place the content on a usb stick.
-  * The students can create their own content (jpg, mp3) using a PC.
-  * Need to document the format of the usb stick (directory, etc.)
+* Pull the USB power from the board.
 
 ## Documentation
 
-The documentation is created using [doxygen] (http://www.stack.nl/~dimitri/doxygen/index.html).
-This replaces the [WordPress website](http://www.stemfromgirls.org/janet-test/) that will soon expire.
+The documentation is created using [doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).
 This documentatino is stored in git hub: https://github.com/jgithubs/jsplayarea.
 
 * Create a configuration file

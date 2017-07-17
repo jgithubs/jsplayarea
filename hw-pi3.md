@@ -4,9 +4,10 @@
 
 ## Plan
 
-The plan was this section was to describe
-* Install the setup on Pi3
-* Document changes and/or differences
+The plan was this section was to describe how to use the Raspberry Pi 3 for this project. 
+* About 98% of the installation was similar.
+* Some of the tools with respect to the GPIO pins was not present.
+* There seem to be a lag in the playback, picture, or rfid reader. Do not recall which component but will investigate at a later time.
 
 ## Hardware
 

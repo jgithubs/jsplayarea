@@ -5,24 +5,26 @@
 ## Development
 
 The development portion of the project is the writing of a series of python and bash scripts.
-A series of software was install that reads the RFID tag, plays pictures, plays audio.
+A [series of software](hw-project.md) was install that reads the RFID tag, plays pictures, plays audio, etc.
 The script binds all the software together to associate RFID tags with pictures and music.
 
 There exists two sets of hardware.
 One hardware is simply to test the installation and write the scripts.
-The second set of hardware is for the Maker Camp.
+The second set of hardware is for the Maker Camp for the students.
+What needs to happen is to bring down the scripts into the Raspberry Pi.
 
 A series of developed files are packaged into tar files (similar to zip files).
 These files are transfer to the second set of hardware and unpackaged.
-The transfer of the file can be done by copying it to the USB stick or transfer it over using FTP.
+The transfer of the file can be done by copying it to the USB stick, transfer it over using FTP, or downloading it into the Raspberry Pi through GitHub.
 These sections describe how to package and unpackage the python and bash scripts.
 
 ## Backup using tar files
 
 Tar files are frequently used in linux like systems.
 Raspberry Pi is linux like.
+The 'tar' software is 
 
-Create and display a tar file with a single file. Display the content of the tar file.
+Create a tar file with a single file. Display the content of the tar file.
 ```
 pi> echo "hello" > readme1.txt
 pi> tar -cf x.tar readme1.txt
@@ -30,7 +32,7 @@ pi> tar -tf x.tar
 readme1.txt
 ```
 
-Append a new file to the same tar file with another file.
+Append a new file to the same tar file.
 ```
 pi> echo "hi" > readme2.txt
 pi> tar -rf x.tar readme2.txt
@@ -43,17 +45,30 @@ readme2.txt
 
 A script was written to package all development scripts and rfid data.
 The results are two files.
-This script uses wildcards and subdirectories.
+This script uses wildcards and references subdirectories.
 ```
 pi>./pkg.sh
+
 pi> ls *.tar
 dat.tar  pkg.tar
 ```
 
 Here are the content of the packaged files.
 This will vary as development progresses.
-Three key scripts are described in this documentation (readAudio.py, run-loop.sh, and readUsb.py).
+Three key scripts are described in the documentation (readAudio.py, run-loop.sh, and readUsb.py).
 Other scripts are script that are called by the three key scripts.
+
+It would of been great to create just python scripts, however, ran into an issue.
+There was a need to run commands (from installed software) and get the printed results back.
+This worked in a limited capacity. 
+The problem was that all of the passed arguments was not passed on to the command.
+
+To work around this issue was to use bash scripts.
+The argument was passed in one long string (from python).
+The bash script then parsed the argument and called the command.
+The printout from the command did come into python.
+Due to time contraints, a proper resolution to this will be investigated in the future.
+If you have any solutions, feel free to submit an example.
 
 The rfid data will vary based on the Maker site.
 ```

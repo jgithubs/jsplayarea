@@ -9,21 +9,55 @@
 * HDMI Modes, http://forum.photonic3d.com/t/raspberry-pi-cea-and-dmt-modes/49
 * RPiConfig, http://elinux.org/RPiconfig
 
-## Device Information
+## HDMI Connection
 
-The following will provide the device name. The last two are two HDMI sources.
+The Raspberry Pi has a HDMI connection to connect to a monitor. 
+In this case using a HDMI monitor with speaker requires no hookup of physical speakers.
+The audio and video is transmitted in the single HDMI cable.
+
+## Adafruit Monitor
+
+The project monitor is using a [10.1" Monitor from Adafruit](https://www.adafruit.com/product/2261).
+When the Raspberry Pi is connected to the monitor, the text is too small to read.
+Other HDMI monitor that are larger in size did not exhibit this problem.
+
+To fix the Adafruit Monitor text size issue, edit the /boot/config.txt with the sudo command.
 ```
-pi> tvservice -n
+sudo vi /boot/config.txt
+```
+Add the 6 lines to the end of the file.
+One line is a comment and 5 lines are the actual settings.
+```
+# Support for the Adafrit monitor
+hdmi_force_hotplug=1
+hdmi_drive=2
+hdmi_group=2
+hdmi_mode=81
+config_hdmi_boost=4
+```
+For the changes to take effect, reboot the Raspberry Pi as an administrator.
+```
+sudo reboot
+```
+
+## HDMI Information
+
+### Device Information
+
+The following will provide the device name.
+The last two are two HDMI sources.
+```
+pi\>  tvservice -n
 VGA to HDMI,  device_name=DEL-DELL_1704FPT
 Auto HDMI,    device_name=RTK-LT-32X575
 HDMI to HDMI, device_name=ACI-ASUS-VH238
 ```
 
 
-## Video Information
+### Video Information
 
 ```
-pi> tvservice -s
+pi>  xtvservice -s
 VGA to HDMI, state 0x120006 [DVI DMT (35) RGB full 5:4],   1280x1024 @ 60.00Hz, progressive
 Auto HDMI,   state 0x12000a [HDMI CEA (5) RGB lim 16:9],   1920x1080 @ 60.00Hz, interlaced
 HDMI to HDMI,state 0x12000a [HDMI CEA (16) RGB lim 16:9],  1920x1080 @ 60.00Hz, progressive
@@ -55,8 +89,10 @@ pi> tvservice -m CEA
 Group CEA has 0 modes:
 ```
 
-## TTY Information
+### TTY Information
 
+The [TTY](http://www.linusakesson.net/programming/tty/index.php) setting is the number of characters with and height wise in a linux shell.
+There are times where not enough characters are display and excessive wrapping occurs.
 ```
 pi> stty size
 VGA to HDMI, 64 160
@@ -66,9 +102,9 @@ SSH,         24  80
 VGA-to-HDMI, 32 80, VGA to HDMI
 ```
 
-Audio Information
+### Audio Information
 
-Display all the controls
+Display all the controls.
 ```
 pi> amixer controls
  numid=3,iface=MIXER,name='PCM Playback Route'
@@ -78,7 +114,8 @@ pi> amixer controls
  numid=4,iface=PCM,name='IEC958 Playback Default'
 The order is 3,2,1,5. The IEC958 is SPDIF (Surround Sound) output.
 ```
-Display all the contents
+
+Display all the content.
 ```
 pi> amixer contents
 numid=3,iface=MIXER,name='PCM Playback Route'
@@ -98,4 +135,3 @@ numid=4,iface=PCM,name='IEC958 Playback Default'
  ; type=IEC958,access=rw------,values=1
  : values=[AES0=0x00 AES1=0x00 AES2=0x00 AES3=0x00]
 ```
-Blah

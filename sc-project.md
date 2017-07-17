@@ -32,7 +32,7 @@ The content will then be transfered to the Raspberry Pi.
 
 * One MP3 file (other format types are not yet supported) is required.
 * One or more JPG file (other format types are not yet supported) is required.
-  * This image shall be 480xXXX in size.
+  * This image shall be 640x480 in widthXheight size (for Adafruit Monitor).
   * There is [software on the Raspberry Pi](sw-img-magick-tools.md) that can scale down the image.
 This can also be done on the PC when the image is created.
 * A USB stick is required to import the images into the Raspberry Pi.

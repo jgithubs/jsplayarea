@@ -4,8 +4,8 @@ This page describes how to build all of the software componets to work with the 
 
 ## RASPBERRY PI (PI) Setup
 
-* [Raspberry Pi 3](hw-pi3.md)
 * [Raspberry Pi 2](hw-pi2.md)
+    * [Raspberry Pi 3, proposed](hw-pi3.md)
 * Version of the operating system.
   * Raspbian-Lite image with Jessie, http://downloads.raspberrypi.org/raspbian_lite/images/
     * January 2017, YES
@@ -13,7 +13,7 @@ This page describes how to build all of the software componets to work with the 
   * 8GB card seems most reliable
 * Determine how to install the Operating System image on the Raspberry Pi.
   * [Headless example](sw-headless.md) (No Gui). Small in size.
-  * Front-end example (XWindow). Large in size
+  * Front-end example (XWindow). Large in size. This is no longer being investigated.
   * Create [Serial connection](hw-serial-connect.md) for serial login
   * Create [SSH server](sw-ssh-server.md) for remote login
   * Create [FTP server](sw-ftp-server.md) to transfer files
@@ -23,14 +23,15 @@ This page describes how to build all of the software componets to work with the 
   * Get the [RFID RC522 breakout](hw-rfid-rc522.md) board working.
   * Insure that the board can read and write RFDI/NFC tags.
   * NFC is the latest technology. It can hold large amounts of data.
+  * The example code uses polling. Need to get interrupts working.
   * Need a physical button to put the breakout board in "write" mode?
-    * Insert a usb stick
-* Determine how to play audio without a GUI
+    * Not required. Using a usb stick that needs to mount automatically.
+* Determine how to play audio in a headless (no GUI) environment.
   * Audio playback with [Music On Console](sw-audio-moc.md) (MOC)
   * Audio volume control is is handle by the [ALSA mixer](sw-audio-alsa.md)
   * Audio output information [thru HDMI](hw-audio-hdmi.md)
   * Audio output control is handled by XXX
-* Determine how to display pictures with a duration of time without GUI
+* Determine how to display pictures with a duration of time in a headless environment.
   * Display pictures with [Frame Buffer ImageViewer](sw-frame-buf-img-viewer.md) (FBI)
   * Converting images to specific size to avoid load time and scaling time. Use [Imagemagick](sw-img-magick-tools.md) Tools
   * Use [symbolic links](sw-symbolic-link.md) to change pictures with the same filename.
@@ -39,8 +40,10 @@ This page describes how to build all of the software componets to work with the 
     * One session is to run the FBI viewer
     * The other session is to run a script for the RFID reader and MOCP
   * Use 'top' to see cpu usage information.
-* Determine how to transfer [developed software](sw-development.md).
+* Determine how to transfer [developed software](sw-development.md) such as scripts.
   * Create [FTP server](sw-ftp-server.md) to transfer files
+  * Transfer via USB stick.
+  * Transfer via GitHub site.
 * Determine how to [mount a USB stick](hw-mount-usb.md).
   * This shall be auto mounted at boot up
   * This shall be automatically detected when inserted.
@@ -74,8 +77,6 @@ This is research done early in the project. The feasibility did not workout main
 * How to [run scratch on the Pi](sw-scratch.md)
   * Need to run headless, however, it seems that this may be an issue
   * Start a scratch program from command line.
-* Determine how to enable the LCD display on the Pi.
-  * 10.1" HDMI Display, ($189.00), https://www.adafruit.com/product/2261
 * Find an OS
   * Supports the [tft lcd screen](hw-tft-lcd.md)
   * Supports [wifi connection](hw-wifi-connect.md)
@@ -137,11 +138,4 @@ https://swittersb.files.wordpress.com/2009/12/sizing-mm-to-inch.jpg
     * https://dave.cheney.net/2015/09/04/building-go-1-5-on-the-raspberry-pi
     * https://dave.cheney.net/2012/09/25/installing-go-on-the-raspberry-pi
 
-## Student Creation Software
-
-* Expect the software to already exists
-* Determine the files/formats of the files
-  * Pictures
-  * Audio
-  * Should we create the web page here?
 
