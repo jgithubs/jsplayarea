@@ -141,3 +141,19 @@ pi> mocp --clear --append seta.m3u --play
 
 MOCP does not seem to adjust levels as described.
 Another method is to use ALSA commands directly.
+
+## Convert Audio
+
+```
+sudo apt-get install mpg123
+```
+
+```
+mpg123 -w dst.wav src.mp3
+```
+
+### Convert MP3 to WAV
+
+
+
+### Convert WAV to MP3

@@ -5,7 +5,7 @@ The audio can be a selected piece of music on the web or a recorded narration on
 This collection is the content that will be transferred to the Raspberry Pi and associated with a RFID tag.
 
 * Audio
-  * This file is an MP3 file. The audio will be played when the series of pictures is displayed.
+  * This file is an WAV file. The audio will be played when the series of pictures is displayed.
 The audio will stop when the last picture display time ends.
 * Pictures
   * This file is an JPG file.
@@ -30,7 +30,7 @@ The content will then be transfered to the Raspberry Pi.
 
 ### Create Content in Windows
 
-* One MP3 file (other format types are not yet supported) is required.
+* One WAV file (other format types are not yet supported) is required.
 * One or more JPG file (other format types are not yet supported) is required.
   * This image shall be 640x480 in widthXheight size (for Adafruit Monitor).
   * There is [software on the Raspberry Pi](sw-img-magick-tools.md) that can scale down the image.
@@ -38,7 +38,7 @@ This can also be done on the PC when the image is created.
 * A USB stick is required to import the images into the Raspberry Pi.
 This USB stick is assumed to be [setup to automount](hw-mount-usb.md) when inserted into the Raspberry Pi.
 * Put files in a directory structure shown below on the USB stick.
-It is suggested not to use uppercases.
+It is suggested to use lowercase with no spaces.
 The Raspberry Pi is case sensitive, therefore, using one case (lowercase) helps with debugging.
 ```
   import -+--- default
@@ -48,20 +48,21 @@ The Raspberry Pi is case sensitive, therefore, using one case (lowercase) helps 
           +--- joe
 ```
 * Create a text file called hList.txt.
-* The text file will list one MP3 file and N JPG file(s).
+* The text file will list one WAV file and N JPG file(s).
 ```
-  Format:
-  <Audio>,<Min>:<Sec>  <Picture>,<Sec>   <Picture>,<Sec> ... <EOL>
+  Format for the hList.txt file:
+  <Audio>,<Min>:<Sec>,<Volume>   <Picture>,<Sec>   <Picture>,<Sec> ... <EOL>
 ```
-  * Audio filenames shall end with a ".mp3". It is always the first in the list.
+  * Audio filenames shall end with a ".wav". It is always the first in the list.
   * Picture filenames shall end with a ".jpg"
+  * The volume range is 0 to 100. This is in percent (Not yet functional).
   * The sum of the picture seconds shall be equal to or less than the audio (in seconds).
-  * In the case below, the audio file is 2 minutes and 30 seconds.
+  * In the case below, the audio file is 2 minutes and 30 seconds at a volume level of 80%.
     The file has three pictures.
     The first picture will play for 5 seconds, the second 4 seconds and the third 3 seconds.
 ```
 pi> cat hList.txt
-hFile1.mp3,2:30 hFile1.jpg,5 hFile2.jpg,4 hFile3.jpg,3
+hFile1.wav,2:30,80 hFile1.jpg,5 hFile2.jpg,4 hFile3.jpg,3
 ```
   * The text file, audio file and image file(s) shall exists in the same directory as the media files.
 
@@ -128,7 +129,7 @@ User Name: Joe
 aRootDir : /media/mnt/import
 aSubDir  : Joe
 aTextFile: hList.txt
-Line     = four-winds-web.mp3,2:10 01-images.jpg,5 02-LctVT.jpg,5 03-raspberry-pi-2-pinout.jpg,5 04-Fig-12-Raspberry-Pi-Components-Explanation.jpg,5 05-images.jpg,5
+Line     = four-winds-web.wav,2:10 01-images.jpg,5 02-LctVT.jpg,5 03-raspberry-pi-2-pinout.jpg,5 04-Fig-12-Raspberry-Pi-Components-Explanation.jpg,5 05-images.jpg,5
 Elements = 6
 four-winds-web.mp3,2:10
 /media/mnt/import/Joe/four-winds-web.mp3

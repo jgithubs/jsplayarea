@@ -1,18 +1,18 @@
 # Project Overview
 
-This project is enhance the game pieces for a board game.
-The example here is to use checker pieces.
-The piece is moderenize by placing a RFID chip inside the piece.
-When the RFID tag is registered with the project, the student will provide content when the RFID chip is scanned across the RFID reader.
-The details to create the project is described and [published on GitHub](https://github.com/jgithubs/jsplayarea).
+This project enhances game pieces for a board game.
+The selected game is checkers and the checker piece will be modified.
+The modification is to place an RFID chip inside a 3D printed checker piece.
+When the RFID tag is registered with the Raspberry Pi, the student will provide their content that consist of a audio file and pictures.
+The details to create the project is [described and published](https://github.com/jgithubs/jsplayarea) on GitHub.
 
 ## Project Components
 
 The hardware is an RFID reader connected to a Raspberry Pi.
 When the RFID reads a know tag, it will signal playback of music with associated images.
 A 3D part will be created and a known RFID tag will be placed inside of the game piece.
-When the game piece comes off the board, the player will swipe the piece across the RFID reader.
-The player's selected images and music will be played on a HDMI screen.
+When the game piece comes off the board, the player will swipe it across the RFID reader.
+The student's content will play on a HDMI screen that has a built in speaker.
 
 * [Hardware/Software installation](hw-project.md) for Project 
 * [Development files for picture/audio/RFID](sw-development.md)
@@ -23,6 +23,7 @@ The player's selected images and music will be played on a HDMI screen.
 
 * Testing
   * Turn up the volume (via script or before hand).
+  * Enable the user to set a volume level in their setup.
 * Need to add another field to compensate for audio levels.
   * Audio levels may not be the same for each student.
   * Audio levels need to be set initially for the default audio/pictures.
@@ -51,22 +52,23 @@ The player's selected images and music will be played on a HDMI screen.
 
 #### Set up the physical connections.
   * Connect primary connections, excluding the power (the USB Power cable).
-    * Ignore the case, it is not required.
+    * Ignore the hardware case, it is not required.
     * The [RFID hardware](hw-rfid-rc522.md) is not shown.
     * The mouse is not required since the image is headless.
     * The HDMI is connected to a [HDMI monitor](hw-audio-hdmi.md) with speakers.
-    * The SD card is expected to be [previously installed](hw-project.md) with an image.
+    * Turn on the HDMI monitor so that it is reconized when power is turned on.
+    * The SD card is expected to be [previously installed](hw-project.md) with the described image.
 
 ![Raspberry Pi 2, Connection](img/PiConnection1.jpg)
   * Connect the [RFID hardware](hw-rfid-rc522.md).
-    * This is connected on the far left because if the [serial connection](hw-serial-connect.md) is used, it connects to the far right.
+    * This is connected on the far left because the far right is used for the [serial connection](hw-serial-connect.md) (if used).
 ![RFID-RC522, Inverted to align with previous picture](img/RaspberryPi-RFID.png)
   * Connect the the power (via the usb cable).
     - Powering will cause the hardware to boot from the image written to the SD card.
     - A log-in screen will appear on the monitor.
 
-#### Log in and start scripts project scripts.
-The scripts were written to use all of the installed software.
+#### Log in and project scripts.
+Scripts were written to use and bind the installed software. The user needs to login and start two scripts using the [screen command](sw-session-screen.md).
 
 * Default credentials
   * Username: pi
@@ -84,24 +86,25 @@ cd $HOME
 ./run-loop.sh
 ```
 
-The default screen will display a single image and music. At this time, multiple images is not possible.
+The default screen will display images and music.
+The screen will be played over and over until the student swipes their [configured](sc-project.md) RFID tag.
 
 #### Swiping of RFID tags.
 The RFID tag contains a unique number.
 Before a tag can work, it's RFID number needs to be written into the system with a single audio and multiple pictures.
 
 The following are two example rfid's that came with the purchase of the RFID reader.
-Their RFID number has already been setup with the Raspberry Pi.
+If their RFID number has already been setup with the Raspberry Pi, then the following will happen.
 
 <img src=http://ecx.images-amazon.com/images/I/81m6UBRj7fL._SX425_.jpg width=380>
 
+* A default image and music will play continously.
 * Swipe the example RFID tag across the RFID reader.
-  * The image and music will change.
+  * The image and music will change from the default.
 * Swipe another example RFID tag across the RFID reader.
   * The image and music will change again.
-* When the music is complete, 
-
-To exit the program, simply hit CNTRL-C. 
+* When the music is complete, the default will play again.
+* To exit the program, simply hit CNTRL-C. 
 
 #### Shutting down the Raspberry Pi
 
@@ -111,17 +114,17 @@ You need to invoke the command as an administrator, therefore, use 'sudo'.
 You may be prompted for a password.
 The password is the same as the login password.
 
-* Gracefully shutdown the Pi for power off. 
-This is required to avoid corruption of the OS on the SD card.
+* Gracefully shutdown the Pi for power off.
 ```
 sudo shutdown now -h
 ```
-* Pull the USB power from the board.
+* Pull the USB power from the board when the text on the screen stops for a long duration.
 
 ## Documentation
 
 The documentation is created using [doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).
-This documentatino is stored in git hub: https://github.com/jgithubs/jsplayarea.
+This documentation is stored in git hub: https://github.com/jgithubs/jsplayarea
+Doxygen is used to verify the documentation before it is uploaded to GitHub.
 
 * Create a configuration file
 ```
@@ -129,14 +132,13 @@ doxygen -g doxyConfig
 ```
 * Modify the configuration file for github
 ```
-  Line 985, USE_MDFILE_AS_MAINPAGE = README.md
   Line 035, PROJECT_NAME           = "Checkerboard Project"
-  Line 000, IMAGE_PATH             = .
-  LINE 000, RECURSIVE              = YES
-    Suggested image size is Width=480, Height=HHH
-  Line 000, OUTPUT_DIRECTORY       = ./DoxyOutput
-  Line 000, INPUT                  = README.md \
+  Line 061, OUTPUT_DIRECTORY       = ./DoxyOutput
+  Line 793, INPUT                  = README.md \
                                      .
+  Line 867, RECURSIVE              = YES
+  Line 929, IMAGE_PATH             = .
+  Line 985, USE_MDFILE_AS_MAINPAGE = README.md
 ```
 * Difference between default configuration and modified configuration
 ```
@@ -171,7 +173,7 @@ gitbash> diff doxyDefault DoxyConfig
 ```
 doxygen doxyConfig
 ```
-* View the output
+* View the output in the following directory. The output will show up in the default web browser.
 ```
 ../DoxyOutput/html/index.html
 ```

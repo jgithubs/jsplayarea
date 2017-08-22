@@ -44,7 +44,9 @@ Simple mixer control 'PCM',0
  Limits: Playback -10239 - 400
  Mono: Playback -1726 [80%] [-17.26dB] [on]
 ```
-* Settings when connected through HDMI to HDMI
+
+* Settings when connected through HDMI to HDMI.
+The control of interest is "Playback Volume" whose numid=1.
 ```
 pi> amixer controls
 numid=3,iface=MIXER,name='PCM Playback Route'
@@ -54,7 +56,8 @@ numid=5,iface=PCM,name='IEC958 Playback Con Mask'
 numid=4,iface=PCM,name='IEC958 Playback Default'
 ```
 
-Take notice that the channel is mono. Need to verify if the Raspberry Pi 3 is mono.
+Take notice that the channel is mono.
+Need to verify if the Raspberry Pi 3 is mono also.
 ```
 pi> amixer scontents
 Simple mixer control 'PCM',0
@@ -63,12 +66,22 @@ Simple mixer control 'PCM',0
   Limits: Playback -10239 - 400
   Mono: Playback -1725 [80%] [-17.25dB] [on]
 ```
+Get the current values using 'numid'
+```
+amixer cget numid=1
+```
+
+Set the new values using 'numid'
+```
+amixer cset numid=1 50%
+```
+
 
 ## Audio control using 'amixer'
 
 The audio levels can be controlled by setting the percentage.
 
-Get the current levels:
+Get the current levels. The 'Simple Control' is 'PCM,0'
 ```
 pi> amixer
  Simple mixer control 'PCM',0
@@ -77,7 +90,9 @@ pi> amixer
  Limits: Playback -10239 - 400
  Mono: Playback -1725 [80%] [-17.25dB] [on]
 ```
-Set the new level and check the results:
+
+Set the new level and check the results. 
+The 'sset' command sets the contents for one mixer simple control.
 ```
 pi> amixer sset PCM,0 90
 

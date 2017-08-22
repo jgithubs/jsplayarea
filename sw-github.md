@@ -18,7 +18,8 @@ gitbash> git clone https://github.com/jgithubs/jsplayarea
 gitbash> cd jsplayarea
 ```
 
-Add/remove files to directory
+Primary commands.
+These commands will be explaned later
 ```
 gitbash> git add <filename>
 gitbash> git rm <filename>
@@ -29,6 +30,24 @@ Add/remove directory
 ```
 gitbash> git rm -r --cached <dirname>
 ```
+
+## Updating file on GitHub
+
+Before attempting to changing files, always pull down the latest updates.
+Again ALWAYS pull down the latest updates.
+If you negelect this, change will be so messed up that you may have to get a fresh download and piece it back together.
+
+Get the latest updates from GitHub.
+In this case, the files were already in sync.
+Once you pull the updates, make your modifications.
+```
+git hub> git pull
+Already up-to-date.
+```
+
+When modifications are complete, perform another update before attempting to commit your changes.
+Fixing conflicts is a skill to be mastered.
+It will not be documented here.
 
 Status of git files.
 A series of files that has been modified.

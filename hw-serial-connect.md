@@ -27,7 +27,7 @@ Putty is recommended for non-admin users on Windows.
 
 Serial connection is convient because the developer's desktop can be used for software installation commands.
 However, the special serial cable needs to be purchased.
-This serial cable will also power the Pi, however, it is not recommended for this project.
+This serial cable will also power the Pi, however, not recommended for this project.
 
 <img src=https://cdn-shop.adafruit.com/970x728/954-02.jpg width=480>
 
@@ -38,23 +38,52 @@ Run Raspi-config and enable the serial connection.
 
 ## Serial Connection
 
-The following wire diagram does not have the red wire connected.
-  * Wiring
-    * Pin 2 (Not connected)
-    * Pin 4 (Not connected)
-    * Pin 6 (Black)
-    * Pin 8 (White)
-    * Pin 10 (Green)
-```
-  Pin(s) are labled with Pin 2 at the top left
-  2  4  6  8  10
-  1  3  5  7   9  
-```
+On the Raspberry Pi, there exists two rows of pins.
+The USB serial cable will connect from the laptop to these pins.
+
+The first pin is located on the bottom left in the diagram below.
+The pins are numbered as follows:
+
+Pins | Col 1 | Col 2 | Col 3 | Col 4 | Col 5 | Col 6 | Col N
+----- | ----- | ----- | ----- | ----- | ----- | ----- | -----
+Top Pins | 2 | 4 | 6 | 8 | 10 | 12 | ...
+Btm Pins | 1 | 3 | 5 | 7 | 9 | 11 | ...
+
+
 <img src=https://cdn-learn.adafruit.com/assets/assets/000/035/695/medium800/learn_raspberry_pi_piconsole_bb.png width=480>
 
+The following connection table are from two perspective.
+Notice that the red wire is not connected.
+<table>
+  <tr>
+    <th>Serial Perspective</th>
+    <th>Hardware Perspective</th>
+  </tr>
+  <tr>
+    <td>
+Wire | Pin
+---- | ---
+Red | Not Connected
+Black | 6
+White | 8
+Green | 10
+    </td>
+    <td>
+Pin | Wire
+---- | ---
+2 | Not Connected
+4 | Not Connected
+6 | Black
+8 | White
+10 | Green
+    </td>
+  </tr>
+</table>
+
 This is the recommended wiring for the project.
-The power will NOT come from the serial cable.
+The power will NOT come from the serial cable, therefore, do not attach the red wire.
 The board will be powered by the micro usb cable (not shown).
+
 <img src=https://i.stack.imgur.com/0aNyt.jpg width=480>
 
 Once the USB cable is plugged into Windows, use 'Device Manager' to determine what COM port was assigned.

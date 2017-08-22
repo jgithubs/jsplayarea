@@ -31,33 +31,40 @@ When the image is downloaded, uncompressed the zip file.
 * Connect the HDMI cable and turn monitor ON.
 * Connect the keyboard
 * Connect the mouse (not necessary for headless)
-* Connect the [ethernet cable](hw-ethernet-connect.md) and/or the [serial cable](hw-serial-connect.md)
+* Connect the [ethernet cable](hw-ethernet-connect.md) and/or the [serial cable](hw-serial-connect.md) (not shown).
 * Connect the audio. Initially start with earphones, configuration thru HDMI will happen later.
-* Insert the SD card
-![](img/PiConnection1.jpg)
+* Insert the SD card.
 
-![](img/PiConnection2.jpg)
+![Full connection](img/PiConnection1.jpg)
+
+![Full connection with peripherals](img/PiConnection2.jpg)
 
 * Once all physical connections are made, connect the power (via the usb).
 Powering will cause the hardware to boot from the image written to the SD card.
-The root file system will be resized at first boot.
+  * The root file system will be resized at first boot.
 * Log in with the default user and password.
   * Username 'pi',
   * Password 'raspberry',
 
 ### Configuration Connection(s)
 
-The first step after powering on the Pi with a OS images is configuration. There is a problem where connecting to the operating system are not always intuitive. All that needs to be done is log into the OS and run the configuration program. Connection options are Ethernet, Serial, and/or Keyboard/Mouse/Monitor and they all have their own limitations. Once the connection is made the default has to be modified to provide proper access.
+The first step after powering on the Pi with a OS images is configuration.
+There is a problem where connecting to the operating system are not always intuitive because features have not been turned on.
+All that needs to be done run the configuration program for the desired connections. 
+Connection options are Keyboard/Mouse/Monito, Ethernet, and/or Serial.
+These connections all have their own limitations. 
+Once the connection is made the default has to be modified to provide proper access.
+
+* Direct connect is the connecting a Keyboard/Mouse/Monitor (described above) directly to the Raspberry Pi.
+This is initially required to get ethernet and/or serial working.
+This requires the most amount of hardware.
+The only special hardware is the HDMI cable that is based on the type of monitor you are using.
 
 * [Ethernet](hw-ethernet-connect.md) is the best method because it requires a single Ethernet cable.
 This connection uses the [SSH Server](sw-ssh-server.md) and a router the assigns an ethernet address.
 
 * [Serial](hw-serial-connect.md) is straight forward, however, a special serial cable is required.
 
-* Direct connect is the connecting a Keyboard/Mouse/Monitor (described above) directly to the Raspberry Pi.
-This is initially required to get ethernet.
-This requires the most amount of hardware.
-The only special hardware is the HDMI cable that is based on the type of monitor you are using.
 
 ## Configuration
 
@@ -66,25 +73,6 @@ Update the operating system.
 This is mandatory because some configuration steps will not work as described.
 ```
 sudo apt-get update
-```
-
-When the update is complete, configure the system.
-```
-sudo raspi-config
-```
-
-Once the configuration is started, some changes are required see “Americanizing” the Raspberry Pi.
-  * Enable the SSH server to enable Ethernet connections (Advanced Options)
-  * Set the locales to en_US.UTF-8 (unselect en_GB.UTF-8, C.UTF-8)
-  * Set the time zone to US and Mountain
-  * Set keyboard to 
-  * Set the time
-  * Set the hostname (optional)
-  * Set the password (optional)
-There are more optional configuration mention in the above link. However, reboot the Pi to accept the minimal.
-
-```
-sudo reboot
 ```
 
 Update the keyboard to english. 
@@ -101,6 +89,25 @@ XKBLAYOUT="us"
 
 sudo reboot
 ```
+
+When the update is complete, configure the system.
+```
+sudo raspi-config
+```
+Once the configuration is started, some changes are required see [“Americanizing” the Raspberry Pi](http://rohankapoor.com/2012/04/americanizing-the-raspberry-pi/) for details.
+  * Enable the SSH server to enable Ethernet connections (Advanced Options)
+  * Set the locales to en_US.UTF-8 (unselect en_GB.UTF-8, C.UTF-8)
+  * Set the time zone to US and Mountain
+  * Set the time
+  * Set the hostname (optional)
+  * Set the password (optional)
+There are more optional configuration mention in the above link. However, reboot the Pi to accept the minimal.
+
+```
+sudo reboot
+```
+
+
 
 ## Full Shutdown
 

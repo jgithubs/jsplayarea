@@ -41,6 +41,24 @@ UUID  : A843-0FD9
 Type  : vfat
 ```
 
+## Another USB Stick
+
+This usb stick has a number of partitions. The partition of interest is the /dev/sda1
+```
+pi> sudo blkid
+/dev/mmcblk0p1: LABEL="boot" UUID="0F5F-3CD8" TYPE="vfat" PARTUUID="ec6ba75b-01"
+/dev/mmcblk0p2: UUID="0aed834e-8c8f-412d-a276-a265dc676112" TYPE="ext4" PARTUUID="ec6ba75b-02"
+/dev/sda1: UUID="E241-A542" TYPE="vfat" PARTUUID="30ed0dca-01"
+/dev/mmcblk0: PTUUID="ec6ba75b" PTTYPE="dos"
+```
+
+* The commands provide numerous information
+```
+Device: /dev/sda1
+UUID  : E241-A542
+Type  : vfat
+```
+
 ## Mount a USB device
 Determine a directory name and create it with 'sudo'. 
 In this case, the name is "mnt" that is typically created in the 'media' directory.
@@ -93,12 +111,12 @@ tmpfs             222540       0    222540   0% /sys/fs/cgroup
 ```
 
 ## Automounting a USB stick
-Define the auto mount by entering the device information in a file used when booting up.
+Define the auto mount by entering the device information in a booting up file.
 
-* There is one line to add and the usb stick should be in the drive.
+* There is one line to add and the usb stick should be in the Raspberry Pi usb port.
 Editing this file requires 'sudo' privilages.
 ```
-pi> sudo vim /etc/fstab
+pi> sudo vi /etc/fstab
 UUID=A843-0FD9 /media/mnt vfat auto,users,rw,uid=1000,gid=100,umask=0002 0 0 
 ```
 * Test the entry by calling the auto mount command manually.
@@ -121,3 +139,10 @@ tmpfs             222540       0    222540   0% /sys/fs/cgroup
 * Put the USB stick back in and verify that it is mounting automatically.
 * This procedure is for one specific USB stick.
 Automounting any USB stick will be studied later.
+
+NOTE: There is an issue that will cause the OS image not to boot.
+If the OS is shutdown with the USB stick, the boot up process remembers this.
+The OS boot up will fail and state that the root account is locked.
+The solution is to put the USB stick back into the port and reboot.
+If you want the OS to reboot without the USB stick, then unmount the stick manually.
+Then shutdown the Raspberry Pi.

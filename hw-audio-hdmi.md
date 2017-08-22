@@ -47,11 +47,17 @@ sudo reboot
 The following will provide the device name.
 The last two are two HDMI sources.
 ```
-pi\>  tvservice -n
-VGA to HDMI,  device_name=DEL-DELL_1704FPT
-Auto HDMI,    device_name=RTK-LT-32X575
-HDMI to HDMI, device_name=ACI-ASUS-VH238
+pi> tvservice -n
+device_name=YOUR-DEVICE-NAME
+
 ```
+
+Connection | Output
+---------- | ------
+VGA to HDMI | device_name=DEL-DELL_1704FPT
+Auto HDMI | device_name=RTK-LT-32X575
+HDMI to HDMI |device_name=ACI-ASUS-VH238
+
 
 
 ### Video Information
